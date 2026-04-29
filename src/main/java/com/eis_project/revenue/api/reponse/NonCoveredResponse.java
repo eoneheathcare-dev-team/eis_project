@@ -21,7 +21,7 @@ import lombok.Setter;
 @AllArgsConstructor
 public class NonCoveredResponse {
     private String dutyGb;
-    private String deptNm;
+    private String dutyNm;
     private String ordCd;
     private String ordNm;
     private Integer cnt;
