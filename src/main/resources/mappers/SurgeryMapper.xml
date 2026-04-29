@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.eis_project.surgery.repository.SurgeryMapper">
+    <select id="getSurgeryDept" statementType="CALLABLE" resultType="SurgeryDeptResponse" parameterType="CommonDateRequest">
+        {
+            CALL dbo.UP_MOBILE_EIS_OP_R (
+                #{startYmd, mode=IN, jdbcType=VARCHAR},
+                #{endYmd, mode=IN, jdbcType=VARCHAR}
+                 )
+            }
+    </select>
+
+    <select id="getSurgeryList" statementType="CALLABLE" resultType="SurgeryResponse" parameterType="CommonDeptRequest">
+        {
+            CALL dbo.UP_MOBILE_EIS_OP_R$001 (
+                #{startYmd, mode=IN, jdbcType=VARCHAR},
+                #{endYmd, mode=IN, jdbcType=VARCHAR},
+                #{deptCd, mode=IN, jdbcType=VARCHAR}
+                 )
+            }
+    </select>
+</mapper>

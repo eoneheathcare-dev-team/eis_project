@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.eis_project.patient.repository.PatientMapper">
+    <select id="getPatientOccupancyRate" statementType="CALLABLE" resultType="patientOccupancyRateResponse" parameterType="CommonDateRequest">
+        {
+            CALL dbo.UP_MOBILE_EIS_PTNT_R (
+                #{startYmd, mode=IN, jdbcType=VARCHAR},
+                #{endYmd, mode=IN, jdbcType=VARCHAR}
+                 )
+            }
+    </select>
+
+    <select id="getPatientVisitRoute" statementType="CALLABLE" resultType="PatientVisitRouteResponse" parameterType="PatientIORequest">
+        {
+            CALL dbo.UP_MOBILE_EIS_PTNT_R$001 (
+                #{startYmd, mode=IN, jdbcType=VARCHAR},
+                #{endYmd, mode=IN, jdbcType=VARCHAR},
+                #{ioGb, mode=IN, jdbcType=VARCHAR}
+                 )
+            }
+    </select>
+
+    <select id="getPatientTrend" statementType="CALLABLE" resultType="PatientTrendResponse" parameterType="PatientIORequest">
+        {
+            CALL dbo.UP_MOBILE_EIS_PTNT_R$002 (
+                #{startYmd, mode=IN, jdbcType=VARCHAR},
+                #{endYmd, mode=IN, jdbcType=VARCHAR},
+                #{ioGb, mode=IN, jdbcType=VARCHAR}
+                 )
+            }
+    </select>
+
+    <select id="getPatientVisitLocation" statementType="CALLABLE" resultType="PatientVisitLocationResponse" parameterType="PatientIORequest">
+        {
+            CALL dbo.UP_MOBILE_EIS_PTNT_R$003 (
+                #{startYmd, mode=IN, jdbcType=VARCHAR},
+                #{endYmd, mode=IN, jdbcType=VARCHAR},
+                #{ioGb, mode=IN, jdbcType=VARCHAR}
+                 )
+            }
+    </select>
+</mapper>

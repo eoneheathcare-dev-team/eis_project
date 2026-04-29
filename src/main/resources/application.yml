@@ -1,0 +1,27 @@
+spring:
+  application:
+    name: eis_project
+  datasource:
+    driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+    url: jdbc:sqlserver://210.124.81.2:1433;databaseName=MEDIPLUS;encrypt=false;sendStringParametersAsUnicode=false;packetSize=4096;
+    username: mccsi
+    password: mccsi_3574
+
+mybatis:
+  type-aliases-package: com.eis_project
+  mapper-locations: classpath:mappers/**/*.xml
+  configuration:
+    # 카멜 케이스 자동 변환 (DB의 user_id를 Java의 userId로)
+    map-underscore-to-camel-case: true
+    default-statement-timeout: 10 # 10초 동안 DB 응답 없으면 강제 에러 발생!
+
+
+springdoc:
+  default-consume-media-type: application/json
+  default-produce-media-type: application/json
+  swagger-ui:
+    path: /swagger-ui.html            # 접속 경로 커스텀
+    disable-swagger-default-url: true
+    display-request-duration: true    # 요청 소요 시간 표시
+  api-docs:
+    path: /api-docs                   # JSON 생성 경로 커스텀

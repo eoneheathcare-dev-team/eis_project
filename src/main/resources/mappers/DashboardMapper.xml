@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.eis_project.dashboard.repository.DashboardMapper">
+    <select id="getDashboardInfo" statementType="CALLABLE" resultType="dashboardResponse" parameterType="dashboardRequest">
+        {
+            CALL dbo.UP_PROFIT_R$012 (
+                #{startYmd, mode=IN, jdbcType=VARCHAR},
+                #{endYmd, mode=IN, jdbcType=VARCHAR},
+                #{entEmplNo, mode=IN, jdbcType=INTEGER},
+                #{entIp, mode=IN, jdbcType=VARCHAR}
+                 )
+            }
+    </select>
+</mapper>

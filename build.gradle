@@ -1,0 +1,59 @@
+plugins {
+    id 'java'
+    id 'org.springframework.boot' version '4.0.6'
+    id 'io.spring.dependency-management' version '1.1.7'
+}
+
+group = 'com'
+version = '0.0.1-SNAPSHOT'
+description = 'eis_project'
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(17)
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    // --- Web & MVC ---
+    implementation 'org.springframework.boot:spring-boot-starter-web' // webmvc는 보통 starter-web에 포함됩니다.
+    implementation 'org.springframework.boot:spring-boot-starter-restclient'
+    implementation 'org.springframework.boot:spring-boot-starter-webservices'
+
+    // --- DB & Persistence (MyBatis / JDBC) ---
+    implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:4.0.1'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jdbc'
+    implementation 'org.springframework.boot:spring-boot-starter-jdbc'
+    runtimeOnly 'com.microsoft.sqlserver:mssql-jdbc' // MSSQL 드라이버
+
+    // SpringDoc OpenAPI 3 (Swagger UI 포함)
+    implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.3.0'
+
+    // --- Lombok ---
+    compileOnly 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok'
+
+    // --- DevTools ---
+    developmentOnly 'org.springframework.boot:spring-boot-devtools'
+
+    // --- Testing ---
+    testImplementation 'org.springframework.boot:spring-boot-starter-test' // 기본 테스트 스타터 (JUnit 등 포함)
+    testImplementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter-test:4.0.1'
+    testImplementation 'org.springframework.boot:spring-boot-starter-data-jdbc-test'
+
+    // Lombok for Testing
+    testCompileOnly 'org.projectlombok:lombok'
+    testAnnotationProcessor 'org.projectlombok:lombok'
+
+    // JUnit Platform
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+
+}
+
+tasks.named('test') {
+    useJUnitPlatform()
+}
