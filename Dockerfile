@@ -1,18 +1,14 @@
-# 1. 자바 17 실행 환경 (알파인 리눅스로 가볍게)
-FROM eclipse-temurin:17-jdk-alpine
+FROM eclipse-temurin:17-jdk-alpine AS build
+WORKDIR /app
+COPY . .
+# Gradle 빌드 실행
+RUN chmod +x gradlew && ./gradlew clean build -x test
 
-# 2. 작업 디렉토리 설정
+# 2단계: 실행 환경
+FROM eclipse-temurin:17-jdk-alpine
 WORKDIR /app
 
-# 3. 시간대 설정 (한국 시간)
-RUN apk add --no-cache tzdata
+COPY --from=build /app/build/libs/*.jar app.jar
 ENV TZ=Asia/Seoul
-
-# 4. 젠킨스가 만들어둔 JAR 파일의 위치 (Gradle 기준)
-ARG JAR_FILE=build/libs/*.jar
-
-# 5. JAR 파일을 도커 컨테이너 내부로 복사
-COPY ${JAR_FILE} app.jar
-
-# 6. 앱 실행 (포트는 8080 고정, 환경은 dev)
+RUN apk add --no-cache tzdata
 ENTRYPOINT ["java", "-jar", "-Dspring.profiles.active=dev", "app.jar"]
