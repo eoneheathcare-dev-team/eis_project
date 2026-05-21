@@ -2,6 +2,7 @@ package com.eis_project.revenue.application.service;
 
 import com.eis_project.common.CommonDateRequest;
 import com.eis_project.common.CommonDeptRequest;
+import com.eis_project.revenue.api.reponse.NonCoverDivisionResponse;
 import com.eis_project.revenue.api.reponse.NonCoveredResponse;
 import com.eis_project.revenue.api.reponse.RevenueDeptResponse;
 import com.eis_project.revenue.api.reponse.RevenueResponse;
@@ -36,5 +37,9 @@ public class RevenueService {
 
     public List<NonCoveredResponse> getNonCovered(CommonDateRequest request) {
         return mapper.getNonCovered(request);
+    }
+
+    public List<NonCoverDivisionResponse> getNonCoverDivision(CommonDateRequest request) {
+        return mapper.getNonCoverDivision(request);
     }
 }

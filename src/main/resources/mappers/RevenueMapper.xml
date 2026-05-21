@@ -28,4 +28,13 @@
                  )
             }
     </select>
+
+    <select id="getNonCoverDivision" statementType="CALLABLE" resultType="NonCoverDivisionResponse" parameterType="CommonDateRequest">
+        {
+            CALL dbo.UP_MOBILE_EIS_NONBENEFIT_R$001 (
+                #{startYmd, mode=IN, jdbcType=VARCHAR},
+                #{endYmd, mode=IN, jdbcType=VARCHAR}
+                 )
+            }
+    </select>
 </mapper>

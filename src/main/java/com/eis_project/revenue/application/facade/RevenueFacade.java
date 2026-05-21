@@ -2,6 +2,7 @@ package com.eis_project.revenue.application.facade;
 
 import com.eis_project.common.CommonDateRequest;
 import com.eis_project.common.CommonDeptRequest;
+import com.eis_project.revenue.api.reponse.NonCoverDivisionResponse;
 import com.eis_project.revenue.api.reponse.NonCoveredResponse;
 import com.eis_project.revenue.api.reponse.RevenueDeptResponse;
 import com.eis_project.revenue.api.reponse.RevenueResponse;
@@ -35,5 +36,9 @@ public class RevenueFacade {
 
     public List<NonCoveredResponse> nonCovered(CommonDateRequest request) {
         return revenueService.getNonCovered(request);
+    }
+
+    public List<NonCoverDivisionResponse> nonCoveredDivision(CommonDateRequest request) {
+        return revenueService.getNonCoverDivision(request);
     }
 }

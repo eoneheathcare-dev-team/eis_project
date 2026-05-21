@@ -3,6 +3,7 @@ package com.eis_project.revenue.api;
 import com.eis_project.common.CommonDateRequest;
 import com.eis_project.common.CommonDeptRequest;
 import com.eis_project.common.CommonResult;
+import com.eis_project.revenue.api.reponse.NonCoverDivisionResponse;
 import com.eis_project.revenue.api.reponse.NonCoveredResponse;
 import com.eis_project.revenue.api.reponse.RevenueDeptResponse;
 import com.eis_project.revenue.api.reponse.RevenueResponse;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 /** 
@@ -47,9 +49,15 @@ public class RevenueController {
         return CommonResult.success(revenueFacade.revenue(request));
     }
 
-    @Operation(summary = "비급여 목록", description = "")
+    @Operation(summary = "비급여 세부", description = "")
     @GetMapping("/non-covered")
     public CommonResult<List<NonCoveredResponse>> nonCovered(CommonDateRequest request) {
         return CommonResult.success(revenueFacade.nonCovered(request));
+    }
+
+    @Operation(summary = "비급여 분류", description = "")
+    @GetMapping("/non-covered/division")
+    public CommonResult<List<NonCoverDivisionResponse>> nonCoveredDivision(CommonDateRequest request) {
+        return CommonResult.success(revenueFacade.nonCoveredDivision(request));
     }
 }

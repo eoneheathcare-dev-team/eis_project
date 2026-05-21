@@ -2,6 +2,7 @@ package com.eis_project.revenue.repository;
 
 import com.eis_project.common.CommonDateRequest;
 import com.eis_project.common.CommonDeptRequest;
+import com.eis_project.revenue.api.reponse.NonCoverDivisionResponse;
 import com.eis_project.revenue.api.reponse.NonCoveredResponse;
 import com.eis_project.revenue.api.reponse.RevenueDeptResponse;
 import com.eis_project.revenue.api.reponse.RevenueResponse;
@@ -16,4 +17,6 @@ public interface RevenueMapper {
     List<RevenueResponse> getRevenue(CommonDeptRequest request);
 
     List<NonCoveredResponse> getNonCovered(CommonDateRequest request);
+
+    List<NonCoverDivisionResponse> getNonCoverDivision(CommonDateRequest request);
 }
