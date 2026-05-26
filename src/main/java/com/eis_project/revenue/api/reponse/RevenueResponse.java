@@ -26,5 +26,5 @@ public class RevenueResponse {
     private String ordEmplNm;
     private Long opdAmt;
     private Long admAmt;
-    private Integer totAmt;
+    private Long totAmt;
 }

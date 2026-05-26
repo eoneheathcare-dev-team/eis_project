@@ -22,5 +22,5 @@ import lombok.Setter;
 public class RevenueDeptResponse {
     private String deptCd;
     private String deptNm;
-    private Integer totAmt;
+    private Long totAmt;
 }
