@@ -3,10 +3,7 @@ package com.eis_project.patient.api;
 import com.eis_project.common.CommonDateRequest;
 import com.eis_project.common.CommonResult;
 import com.eis_project.patient.api.request.PatientIORequest;
-import com.eis_project.patient.api.response.PatientOccupancyRateResponse;
-import com.eis_project.patient.api.response.PatientTrendResponse;
-import com.eis_project.patient.api.response.PatientVisitLocationResponse;
-import com.eis_project.patient.api.response.PatientVisitRouteResponse;
+import com.eis_project.patient.api.response.*;
 import com.eis_project.patient.application.facade.PatientFacade;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -26,6 +23,7 @@ import java.util.List;
  * DATE             AUTHOR              NOTE
  * ----------------------------------------------------
  * 26. 4. 28.       김주한             최초생성
+ * 26. 5. 27.       어 진              외래/입원 환자 수 조회 추가
 */
 
 @Tag(name = "Patient", description = "환자 통계 API")
@@ -58,5 +56,11 @@ public class PatientController {
     @GetMapping("/visit-location")
     public CommonResult<List<PatientVisitLocationResponse>> patientVisitLocation (PatientIORequest request) {
         return CommonResult.success(patientFacade.patientVisitLocation(request));
+    }
+
+    @Operation(summary = "외래/입원 환자 수", description = "")
+    @GetMapping("/cnt")
+    public CommonResult<List<PatientIOCntResponse>> patientIOCnt (CommonDateRequest request) {
+        return CommonResult.success(patientFacade.patientIOCnt(request));
     }
 }

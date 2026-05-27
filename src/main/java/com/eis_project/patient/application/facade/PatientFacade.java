@@ -2,10 +2,7 @@ package com.eis_project.patient.application.facade;
 
 import com.eis_project.common.CommonDateRequest;
 import com.eis_project.patient.api.request.PatientIORequest;
-import com.eis_project.patient.api.response.PatientOccupancyRateResponse;
-import com.eis_project.patient.api.response.PatientTrendResponse;
-import com.eis_project.patient.api.response.PatientVisitLocationResponse;
-import com.eis_project.patient.api.response.PatientVisitRouteResponse;
+import com.eis_project.patient.api.response.*;
 import com.eis_project.patient.application.service.PatientService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -20,6 +17,7 @@ import java.util.List;
  * DATE             AUTHOR              NOTE
  * ----------------------------------------------------
  * 26. 4. 28.       김주한             최초생성
+ * 26. 5. 27.       어 진              외래/입원 환자 수 조회 추가
 */
 
 @Service
@@ -41,5 +39,9 @@ public class PatientFacade {
 
     public List<PatientVisitLocationResponse> patientVisitLocation(PatientIORequest request) {
         return patientService.getPatientVisitLocation(request);
+    }
+
+    public List<PatientIOCntResponse> patientIOCnt(CommonDateRequest request) {
+        return patientService.getPatientIOCnt(request);
     }
 }

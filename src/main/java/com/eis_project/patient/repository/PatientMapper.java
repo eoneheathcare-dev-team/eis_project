@@ -2,10 +2,7 @@ package com.eis_project.patient.repository;
 
 import com.eis_project.common.CommonDateRequest;
 import com.eis_project.patient.api.request.PatientIORequest;
-import com.eis_project.patient.api.response.PatientOccupancyRateResponse;
-import com.eis_project.patient.api.response.PatientTrendResponse;
-import com.eis_project.patient.api.response.PatientVisitLocationResponse;
-import com.eis_project.patient.api.response.PatientVisitRouteResponse;
+import com.eis_project.patient.api.response.*;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
@@ -20,4 +17,6 @@ public interface PatientMapper {
     List<PatientTrendResponse> getPatientTrend(PatientIORequest request);
 
     List<PatientVisitLocationResponse> getPatientVisitLocation(PatientIORequest request);
+
+    List<PatientIOCntResponse> getPatientIOCnt(CommonDateRequest request);
 }
