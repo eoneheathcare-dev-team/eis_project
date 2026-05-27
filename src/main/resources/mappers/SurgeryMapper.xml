@@ -19,4 +19,13 @@
                  )
             }
     </select>
+
+    <select id="getOperationCnt" statementType="CALLABLE" resultType="OperationCntResponse" parameterType="CommonDeptRequest">
+        {
+            CALL dbo.UP_MOBILE_EIS_MAIN_R$003 (
+                #{startYmd, mode=IN, jdbcType=VARCHAR},
+                #{endYmd, mode=IN, jdbcType=VARCHAR}
+                 )
+            }
+    </select>
 </mapper>
