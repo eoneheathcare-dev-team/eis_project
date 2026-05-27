@@ -1,11 +1,6 @@
 package com.eis_project.ward.application.service;
 
 import com.eis_project.common.CommonDateRequest;
-import com.eis_project.common.CommonDeptRequest;
-import com.eis_project.surgery.api.response.OperationCntResponse;
-import com.eis_project.surgery.api.response.SurgeryDeptResponse;
-import com.eis_project.surgery.api.response.SurgeryResponse;
-import com.eis_project.surgery.repository.SurgeryMapper;
 import com.eis_project.ward.api.response.BedOccupancyRateResponse;
 import com.eis_project.ward.repository.WardMapper;
 import lombok.RequiredArgsConstructor;
