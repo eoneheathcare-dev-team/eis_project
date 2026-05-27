@@ -2,10 +2,7 @@ package com.eis_project.revenue.application.service;
 
 import com.eis_project.common.CommonDateRequest;
 import com.eis_project.common.CommonDeptRequest;
-import com.eis_project.revenue.api.reponse.NonCoverDivisionResponse;
-import com.eis_project.revenue.api.reponse.NonCoveredResponse;
-import com.eis_project.revenue.api.reponse.RevenueDeptResponse;
-import com.eis_project.revenue.api.reponse.RevenueResponse;
+import com.eis_project.revenue.api.reponse.*;
 import com.eis_project.revenue.repository.RevenueMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -20,6 +17,7 @@ import java.util.List;
  * DATE             AUTHOR              NOTE
  * ----------------------------------------------------
  * 26. 4. 28.       김주한             최초생성
+ * 26. 5. 27.       어 진              입원/외래 총 진료비 조회 추가
 */
 
 @Service
@@ -41,5 +39,9 @@ public class RevenueService {
 
     public List<NonCoverDivisionResponse> getNonCoverDivision(CommonDateRequest request) {
         return mapper.getNonCoverDivision(request);
+    }
+
+    public List<TotalClinicRevenueResponse> getTotalClinicRevenue(CommonDateRequest request) {
+        return mapper.getTotalClinicRevenue(request);
     }
 }

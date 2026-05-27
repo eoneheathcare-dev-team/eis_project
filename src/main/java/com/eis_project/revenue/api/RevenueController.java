@@ -3,10 +3,7 @@ package com.eis_project.revenue.api;
 import com.eis_project.common.CommonDateRequest;
 import com.eis_project.common.CommonDeptRequest;
 import com.eis_project.common.CommonResult;
-import com.eis_project.revenue.api.reponse.NonCoverDivisionResponse;
-import com.eis_project.revenue.api.reponse.NonCoveredResponse;
-import com.eis_project.revenue.api.reponse.RevenueDeptResponse;
-import com.eis_project.revenue.api.reponse.RevenueResponse;
+import com.eis_project.revenue.api.reponse.*;
 import com.eis_project.revenue.application.facade.RevenueFacade;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -16,7 +13,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.time.LocalDateTime;
 import java.util.List;
 
 /** 
@@ -27,6 +23,7 @@ import java.util.List;
  * DATE             AUTHOR              NOTE
  * ----------------------------------------------------
  * 26. 4. 28.       김주한             최초생성
+ * 26. 5. 27.       어 진              입원/외래 총 진료비 조회 추가
 */
 
 @Tag(name = "Revenue", description = "수익 통계 API")
@@ -59,5 +56,11 @@ public class RevenueController {
     @GetMapping("/non-covered/division")
     public CommonResult<List<NonCoverDivisionResponse>> nonCoveredDivision(CommonDateRequest request) {
         return CommonResult.success(revenueFacade.nonCoveredDivision(request));
+    }
+
+    @Operation(summary = "입원 외래 총 진료비 ", description = "")
+    @GetMapping("/profit/clinic")
+    public CommonResult<List<TotalClinicRevenueResponse>> totalClinicRevenue(CommonDateRequest request) {
+        return CommonResult.success(revenueFacade.totalClinicRevenue(request));
     }
 }
