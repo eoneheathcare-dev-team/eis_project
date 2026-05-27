@@ -3,6 +3,7 @@ package com.eis_project.surgery.api;
 import com.eis_project.common.CommonDateRequest;
 import com.eis_project.common.CommonDeptRequest;
 import com.eis_project.common.CommonResult;
+import com.eis_project.surgery.api.response.OperationCntResponse;
 import com.eis_project.surgery.api.response.SurgeryDeptResponse;
 import com.eis_project.surgery.api.response.SurgeryResponse;
 import com.eis_project.surgery.application.facade.SurgeryFacade;
@@ -24,6 +25,7 @@ import java.util.List;
  * DATE             AUTHOR              NOTE
  * ----------------------------------------------------
  * 26. 4. 28.       김주한             최초생성
+ * 26. 5. 27.       어 진              수술 건수 조회 추가
 */
 
 @Tag(name = "Surgery", description = "수술 통계 API")
@@ -44,6 +46,12 @@ public class SurgeryController {
     @GetMapping("")
     public CommonResult<List<SurgeryResponse>> surgery (CommonDeptRequest request) {
         return CommonResult.success(surgeryFacade.surgery(request));
+    }
+
+    @Operation(summary = "수술 - 수술건수 조회", description = "")
+    @GetMapping("/cnt/operations")
+    public CommonResult<List<OperationCntResponse>> operationCnt (CommonDateRequest request) {
+        return CommonResult.success(surgeryFacade.operationCnt(request));
     }
     
 }
