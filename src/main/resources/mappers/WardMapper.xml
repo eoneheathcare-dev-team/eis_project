@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.eis_project.ward.repository.WardMapper">
+    <select id="getBedOccupancyRate" statementType="CALLABLE" resultType="BedOccupancyRateResponse" parameterType="CommonDateRequest">
+        {
+            CALL dbo.UP_MOBILE_EIS_MAIN_R$004 (
+                #{startYmd, mode=IN, jdbcType=VARCHAR},
+                #{endYmd, mode=IN, jdbcType=VARCHAR}
+                 )
+            }
+    </select>
+</mapper>
