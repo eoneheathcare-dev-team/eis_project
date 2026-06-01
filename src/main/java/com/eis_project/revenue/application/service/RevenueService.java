@@ -2,6 +2,7 @@ package com.eis_project.revenue.application.service;
 
 import com.eis_project.common.CommonDateRequest;
 import com.eis_project.common.CommonDeptRequest;
+import com.eis_project.common.CommonMedfeeRequest;
 import com.eis_project.revenue.api.reponse.*;
 import com.eis_project.revenue.repository.RevenueMapper;
 import lombok.RequiredArgsConstructor;
@@ -43,5 +44,25 @@ public class RevenueService {
 
     public List<TotalClinicRevenueResponse> getTotalClinicRevenue(CommonDateRequest request) {
         return mapper.getTotalClinicRevenue(request);
+    }
+
+    public List<NonCoveredItemResponse> getNonCoveredItem(CommonDateRequest request) {
+        return mapper.getNonCoveredItem(request);
+    }
+
+    public List<NonCoveredTransitionResponse> getNonCoveredTransition(CommonDateRequest request) {
+        return mapper.getNonCoveredTransition(request);
+    }
+
+    public List<NonCoveredDepartmentResponse> getNonCoveredDepartment(CommonDateRequest request) {
+        return mapper.getNonCoveredDepartment(request);
+    }
+
+    public List<NonCoveredMainResponse> getNonCoveredMain(CommonDateRequest request) {
+        return mapper.getNonCoveredMain(request);
+    }
+
+    public List<NonCoveredDetailResponse> getNonCoveredDetail(CommonMedfeeRequest request) {
+        return mapper.getNonCoveredDetail(request);
     }
 }

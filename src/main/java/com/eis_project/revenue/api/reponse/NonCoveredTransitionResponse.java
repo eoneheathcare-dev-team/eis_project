@@ -1,24 +1,27 @@
-package com.eis_project.dashboard.api.request;
+package com.eis_project.revenue.api.reponse;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.math.BigDecimal;
+
 /**
- * packageName   : com.eis_project.dashboard.api.request
- * fileName      : DashboardRequest
+ * packageName   : com.eis_project.revenue.api.reponse
+ * fileName      : NonCoveredTransitionResponse
  * description   :
  * ====================================================
  * DATE             AUTHOR              NOTE
  * ----------------------------------------------------
- * 26. 4. 28.       김주한             최초생성
+ * 26. 6. 1.       김주한             최초생성
 */
 
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class DashboardRequest {
-    private String searchYmd;
+public class NonCoveredTransitionResponse {
+    private String aplyYmd;
+    private BigDecimal amt;
 }

@@ -46,4 +46,50 @@
                  )
             }
     </select>
+
+    <select id="getNonCoveredItem" statementType="CALLABLE" resultType="nonCoveredItemResponse" parameterType="CommonDateRequest">
+        {
+            CALL dbo.UP_MOBILE_EIS_NON_BENEFIT_R$001 (
+                #{startYmd, mode=IN, jdbcType=VARCHAR},
+                #{endYmd, mode=IN, jdbcType=VARCHAR}
+                 )
+            }
+    </select>
+
+    <select id="getNonCoveredTransition" statementType="CALLABLE" resultType="nonCoveredTransitionResponse" parameterType="CommonDateRequest">
+        {
+            CALL dbo.UP_MOBILE_EIS_NON_BENEFIT_R$002 (
+                #{startYmd, mode=IN, jdbcType=VARCHAR},
+                #{endYmd, mode=IN, jdbcType=VARCHAR}
+                 )
+            }
+    </select>
+
+    <select id="getNonCoveredDepartment" statementType="CALLABLE" resultType="nonCoveredDepartmentResponse" parameterType="CommonDateRequest">
+        {
+            CALL dbo.UP_MOBILE_EIS_NON_BENEFIT_R$003 (
+                #{startYmd, mode=IN, jdbcType=VARCHAR},
+                #{endYmd, mode=IN, jdbcType=VARCHAR}
+                 )
+            }
+    </select>
+
+    <select id="getNonCoveredMain" statementType="CALLABLE" resultType="nonCoveredMainResponse" parameterType="CommonDateRequest">
+        {
+            CALL dbo.UP_MOBILE_EIS_NON_BENEFIT_R$004 (
+                #{startYmd, mode=IN, jdbcType=VARCHAR},
+                #{endYmd, mode=IN, jdbcType=VARCHAR}
+                 )
+            }
+    </select>
+
+    <select id="getNonCoveredDetail" statementType="CALLABLE" resultType="nonCoveredDetailResponse" parameterType="CommonMedfeeRequest">
+        {
+            CALL dbo.UP_MOBILE_EIS_NON_BENEFIT_R$005 (
+                #{startYmd, mode=IN, jdbcType=VARCHAR},
+                #{endYmd, mode=IN, jdbcType=VARCHAR},
+                #{medfeeClassCd, mode=IN, jdbcType=VARCHAR}
+                 )
+            }
+    </select>
 </mapper>

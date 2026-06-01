@@ -2,6 +2,7 @@ package com.eis_project.revenue.api;
 
 import com.eis_project.common.CommonDateRequest;
 import com.eis_project.common.CommonDeptRequest;
+import com.eis_project.common.CommonMedfeeRequest;
 import com.eis_project.common.CommonResult;
 import com.eis_project.revenue.api.reponse.*;
 import com.eis_project.revenue.application.facade.RevenueFacade;
@@ -24,6 +25,7 @@ import java.util.List;
  * ----------------------------------------------------
  * 26. 4. 28.       김주한             최초생성
  * 26. 5. 27.       어 진              입원/외래 총 진료비 조회 추가
+ * 26. 6. 01.       김주한             비급여 항목, 추이, 진료과별, 메인, 항목상세 API 추가
 */
 
 @Tag(name = "Revenue", description = "수익 통계 API")
@@ -34,7 +36,7 @@ import java.util.List;
 public class RevenueController {
     private final RevenueFacade revenueFacade;
 
-    @Operation(summary = "수익 - 부서 조회", description = "")
+    /*@Operation(summary = "수익 - 부서 조회", description = "")
     @GetMapping("/dept")
     public CommonResult<List<RevenueDeptResponse>> revenueDept(CommonDateRequest request) {
         return CommonResult.success(revenueFacade.revenueDept(request));
@@ -50,7 +52,7 @@ public class RevenueController {
     @GetMapping("/non-covered")
     public CommonResult<List<NonCoveredResponse>> nonCovered(CommonDateRequest request) {
         return CommonResult.success(revenueFacade.nonCovered(request));
-    }
+    }*/
 
     @Operation(summary = "비급여 분류", description = "")
     @GetMapping("/non-covered/division")
@@ -62,5 +64,35 @@ public class RevenueController {
     @GetMapping("/profit/clinic")
     public CommonResult<List<TotalClinicRevenueResponse>> totalClinicRevenue(CommonDateRequest request) {
         return CommonResult.success(revenueFacade.totalClinicRevenue(request));
+    }
+
+    @Operation(summary = "비급여 항목", description = "")
+    @GetMapping("/non-covered/item")
+    public CommonResult<List<NonCoveredItemResponse>> nonCoveredItem(CommonDateRequest request) {
+        return CommonResult.success(revenueFacade.nonCoveredItem(request));
+    }
+
+    @Operation(summary = "비급여 추이", description = "")
+    @GetMapping("/non-covered/transition")
+    public CommonResult<List<NonCoveredTransitionResponse>> nonCoveredTransition(CommonDateRequest request) {
+        return CommonResult.success(revenueFacade.nonCoveredTransition(request));
+    }
+
+    @Operation(summary = "비급여 - 진료과별", description = "")
+    @GetMapping("/non-covered/department")
+    public CommonResult<List<NonCoveredDepartmentResponse>> nonCoveredDepartment(CommonDateRequest request) {
+        return CommonResult.success(revenueFacade.nonCoveredDepartment(request));
+    }
+
+    @Operation(summary = "비급여 - 메인", description = "")
+    @GetMapping("/non-covered/main")
+    public CommonResult<List<NonCoveredMainResponse>> nonCoveredMain(CommonDateRequest request) {
+        return CommonResult.success(revenueFacade.nonCoveredMain(request));
+    }
+
+    @Operation(summary = "비급여 - 상세", description = "")
+    @GetMapping("/non-covered/detail")
+    public CommonResult<List<NonCoveredDetailResponse>> nonCoveredDetail(CommonMedfeeRequest request) {
+        return CommonResult.success(revenueFacade.nonCoveredDetail(request));
     }
 }

@@ -1,4 +1,4 @@
-package com.eis_project.dashboard.api.request;
+package com.eis_project.dashboard.api.response;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -6,19 +6,20 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 /**
- * packageName   : com.eis_project.dashboard.api.request
- * fileName      : DashboardRequest
+ * packageName   : com.eis_project.dashboard.api.response
+ * fileName      : DashboardWardRateResponse
  * description   :
  * ====================================================
  * DATE             AUTHOR              NOTE
  * ----------------------------------------------------
- * 26. 4. 28.       김주한             최초생성
+ * 26. 6. 1.       김주한             최초생성
 */
+
 
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class DashboardRequest {
-    private String searchYmd;
+public class DashboardWardRateResponse {
+    private float value;
 }
