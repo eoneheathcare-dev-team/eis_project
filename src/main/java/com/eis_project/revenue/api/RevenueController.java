@@ -36,7 +36,7 @@ import java.util.List;
 public class RevenueController {
     private final RevenueFacade revenueFacade;
 
-    /*@Operation(summary = "수익 - 부서 조회", description = "")
+    @Operation(summary = "수익 - 부서 조회", description = "")
     @GetMapping("/dept")
     public CommonResult<List<RevenueDeptResponse>> revenueDept(CommonDateRequest request) {
         return CommonResult.success(revenueFacade.revenueDept(request));
@@ -52,7 +52,7 @@ public class RevenueController {
     @GetMapping("/non-covered")
     public CommonResult<List<NonCoveredResponse>> nonCovered(CommonDateRequest request) {
         return CommonResult.success(revenueFacade.nonCovered(request));
-    }*/
+    }
 
     @Operation(summary = "비급여 분류", description = "")
     @GetMapping("/non-covered/division")
