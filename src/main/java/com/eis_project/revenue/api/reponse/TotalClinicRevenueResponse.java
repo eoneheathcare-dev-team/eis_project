@@ -6,6 +6,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.math.BigDecimal;
+
 /**
  * packageName   : com.eis_project.revenue.api.reponse
  * fileName      : TotalClinicRevenueResponse
@@ -22,8 +24,11 @@ import lombok.Setter;
 @AllArgsConstructor
 public class TotalClinicRevenueResponse {
     @Schema(description = "외래 총 진료비", example = "103513472")
-    private String opdClinicAmt;
+    private BigDecimal opdClinicAmt;
 
     @Schema(description = "입원 총 진료비", example = "51342153")
-    private String admClinicAmt;
+    private BigDecimal admClinicAmt;
+
+    @Schema(description = "조회 월 진료비", example = "162153542")
+    private BigDecimal monthAmt;
 }
