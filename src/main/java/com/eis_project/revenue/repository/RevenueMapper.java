@@ -5,6 +5,7 @@ import com.eis_project.common.CommonDeptRequest;
 import com.eis_project.common.CommonMedfeeRequest;
 import com.eis_project.revenue.api.reponse.*;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -18,7 +19,7 @@ public interface RevenueMapper {
 
     List<NonCoverDivisionResponse> getNonCoverDivision(CommonDateRequest request);
 
-    List<TotalClinicRevenueResponse> getTotalClinicRevenue(CommonDateRequest request);
+    List<TotalClinicRevenueResponse> getTotalClinicRevenue(@Param("searchYmd") String searchYmd);
 
     List<NonCoveredItemResponse> getNonCoveredItem(CommonDateRequest request);
 

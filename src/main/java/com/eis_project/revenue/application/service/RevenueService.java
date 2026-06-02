@@ -42,8 +42,8 @@ public class RevenueService {
         return mapper.getNonCoverDivision(request);
     }
 
-    public List<TotalClinicRevenueResponse> getTotalClinicRevenue(CommonDateRequest request) {
-        return mapper.getTotalClinicRevenue(request);
+    public List<TotalClinicRevenueResponse> getTotalClinicRevenue(String searchYmd) {
+        return mapper.getTotalClinicRevenue(searchYmd);
     }
 
     public List<NonCoveredItemResponse> getNonCoveredItem(CommonDateRequest request) {

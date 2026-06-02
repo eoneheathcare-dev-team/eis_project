@@ -38,11 +38,10 @@
             }
     </select>
 
-    <select id="getTotalClinicRevenue" statementType="CALLABLE" resultType="TotalClinicRevenueResponse" parameterType="CommonDateRequest">
+    <select id="getTotalClinicRevenue" statementType="CALLABLE" resultType="TotalClinicRevenueResponse">
         {
             CALL dbo.UP_MOBILE_EIS_MAIN_R$002 (
-                #{startYmd, mode=IN, jdbcType=VARCHAR},
-                #{endYmd, mode=IN, jdbcType=VARCHAR}
+                #{searchYmd, mode=IN, jdbcType=VARCHAR}
                  )
             }
     </select>

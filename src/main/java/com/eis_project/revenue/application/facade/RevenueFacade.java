@@ -41,8 +41,8 @@ public class RevenueFacade {
         return revenueService.getNonCoverDivision(request);
     }
 
-    public List<TotalClinicRevenueResponse> totalClinicRevenue(CommonDateRequest request) {
-        return revenueService.getTotalClinicRevenue(request);
+    public List<TotalClinicRevenueResponse> totalClinicRevenue(String searchYmd) {
+        return revenueService.getTotalClinicRevenue(searchYmd);
     }
 
     public List<NonCoveredItemResponse> nonCoveredItem(CommonDateRequest request) {

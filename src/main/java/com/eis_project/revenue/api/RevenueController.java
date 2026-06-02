@@ -10,6 +10,7 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springdoc.core.annotations.ParameterObject;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -62,8 +63,8 @@ public class RevenueController {
 
     @Operation(summary = "입원 외래 총 진료비 ", description = "")
     @GetMapping("/profit/clinic")
-    public CommonResult<List<TotalClinicRevenueResponse>> totalClinicRevenue(CommonDateRequest request) {
-        return CommonResult.success(revenueFacade.totalClinicRevenue(request));
+    public CommonResult<List<TotalClinicRevenueResponse>> totalClinicRevenue(@ParameterObject String searchYmd) {
+        return CommonResult.success(revenueFacade.totalClinicRevenue(searchYmd));
     }
 
     @Operation(summary = "비급여 항목", description = "")
