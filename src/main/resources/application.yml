@@ -1,6 +1,11 @@
 spring:
   application:
     name: eis_project
+  datasource:
+    driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+    url: jdbc:sqlserver://210.107.85.120:1433;databaseName=MEDIPLUS_DEV;encrypt=false;sendStringParametersAsUnicode=false;packetSize=4096;
+    username: mccsi
+    password: mccsi_3574
 
 mybatis:
   type-aliases-package: com.eis_project
