@@ -4,7 +4,7 @@ pipeline {
       stages {
           stage('Build Image') {
               steps {
-                  sh 'docker build -t eis:latest .'
+                  sh 'DOCKER_BUILDKIT=1 docker build -t eis:latest .'
               }
           }
 
