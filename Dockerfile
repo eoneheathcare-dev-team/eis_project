@@ -1,7 +1,8 @@
+# syntax=docker/dockerfile:1.7
 FROM eclipse-temurin:17-jdk-alpine AS build
 WORKDIR /app
 COPY . .
-RUN chmod +x gradlew && ./gradlew clean build -x test && find build/libs -name "*.jar" ! -name "*-plain.jar" -exec cp {} /app/app.jar \;
+RUN --mount=type=cache,target=/root/.gradle chmod +x gradlew && ./gradlew clean build -x test
 
 FROM eclipse-temurin:17-jdk-alpine
 WORKDIR /app
