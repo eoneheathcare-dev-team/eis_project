@@ -1,0 +1,17 @@
+services:
+  eis-api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: eis-project-api:latest
+    container_name: eis-project-api
+    restart: unless-stopped
+    ports:
+      - "${APP_PORT:-8080}:8080"
+    environment:
+      SPRING_PROFILES_ACTIVE: window
+      SERVER_PORT: 8080
+      EIS_DB_URL: "${EIS_DB_URL:-jdbc:sqlserver://210.124.81.2:1433;databaseName=MEDIPLUS;encrypt=false;sendStringParametersAsUnicode=false;packetSize=4096;}"
+      EIS_DB_USERNAME: "${EIS_DB_USERNAME:-mccsi}"
+      EIS_DB_PASSWORD: "${EIS_DB_PASSWORD:-mccsi_3574}"
+      TZ: Asia/Seoul
