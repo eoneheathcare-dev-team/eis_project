@@ -9,6 +9,7 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springdoc.core.annotations.ParameterObject;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -60,7 +61,7 @@ public class PatientController {
 
     @Operation(summary = "외래/입원 환자 수", description = "")
     @GetMapping("/cnt")
-    public CommonResult<List<PatientIOCntResponse>> patientIOCnt (CommonDateRequest request) {
-        return CommonResult.success(patientFacade.patientIOCnt(request));
+    public CommonResult<List<PatientIOCntResponse>> patientIOCnt (@ParameterObject String searchYmd) {
+        return CommonResult.success(patientFacade.patientIOCnt(searchYmd));
     }
 }

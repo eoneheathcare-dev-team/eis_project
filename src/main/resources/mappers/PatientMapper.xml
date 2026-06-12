@@ -43,8 +43,7 @@
     <select id="getPatientIOCnt" statementType="CALLABLE" resultType="PatientIOCntResponse" parameterType="CommonDateRequest">
         {
             CALL dbo.UP_MOBILE_EIS_MAIN_R$001 (
-                #{startYmd, mode=IN, jdbcType=VARCHAR},
-                #{endYmd, mode=IN, jdbcType=VARCHAR}
+                #{searchYmd, mode=IN, jdbcType=VARCHAR}
                  )
             }
     </select>

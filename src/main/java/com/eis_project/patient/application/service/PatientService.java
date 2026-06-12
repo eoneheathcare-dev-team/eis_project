@@ -42,7 +42,7 @@ public class PatientService {
         return patientMapper.getPatientVisitLocation(request);
     }
 
-    public List<PatientIOCntResponse> getPatientIOCnt(CommonDateRequest request) {
-        return patientMapper.getPatientIOCnt(request);
+    public List<PatientIOCntResponse> getPatientIOCnt(String searchYmd) {
+        return patientMapper.getPatientIOCnt(searchYmd);
     }
 }

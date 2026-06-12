@@ -18,5 +18,5 @@ public interface PatientMapper {
 
     List<PatientVisitLocationResponse> getPatientVisitLocation(PatientIORequest request);
 
-    List<PatientIOCntResponse> getPatientIOCnt(CommonDateRequest request);
+    List<PatientIOCntResponse> getPatientIOCnt(String searchYmd);
 }

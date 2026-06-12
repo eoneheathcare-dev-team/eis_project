@@ -41,7 +41,7 @@ public class PatientFacade {
         return patientService.getPatientVisitLocation(request);
     }
 
-    public List<PatientIOCntResponse> patientIOCnt(CommonDateRequest request) {
-        return patientService.getPatientIOCnt(request);
+    public List<PatientIOCntResponse> patientIOCnt(String searchYmd) {
+        return patientService.getPatientIOCnt(searchYmd);
     }
 }
