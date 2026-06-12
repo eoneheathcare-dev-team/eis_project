@@ -41,8 +41,4 @@ public class PatientService {
     public List<PatientVisitLocationResponse> getPatientVisitLocation(PatientIORequest request) {
         return patientMapper.getPatientVisitLocation(request);
     }
-
-    public List<PatientIOCntResponse> getPatientIOCnt(String searchYmd) {
-        return patientMapper.getPatientIOCnt(searchYmd);
-    }
 }

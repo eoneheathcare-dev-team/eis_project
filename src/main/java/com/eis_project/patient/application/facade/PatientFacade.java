@@ -40,8 +40,4 @@ public class PatientFacade {
     public List<PatientVisitLocationResponse> patientVisitLocation(PatientIORequest request) {
         return patientService.getPatientVisitLocation(request);
     }
-
-    public List<PatientIOCntResponse> patientIOCnt(String searchYmd) {
-        return patientService.getPatientIOCnt(searchYmd);
-    }
 }
