@@ -58,10 +58,4 @@ public class PatientController {
     public CommonResult<List<PatientVisitLocationResponse>> patientVisitLocation (PatientIORequest request) {
         return CommonResult.success(patientFacade.patientVisitLocation(request));
     }
-
-    @Operation(summary = "외래/입원 환자 수", description = "")
-    @GetMapping("/cnt")
-    public CommonResult<List<PatientIOCntResponse>> patientIOCnt (@ParameterObject String searchYmd) {
-        return CommonResult.success(patientFacade.patientIOCnt(searchYmd));
-    }
 }
