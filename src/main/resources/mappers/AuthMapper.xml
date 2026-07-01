@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.eis_project.auth.repository.AuthMapper">
+    <select id="getEmployeeInfo" statementType="CALLABLE" resultType="loginResponse" parameterType="loginRequest">
+        {
+            CALL dbo.UP_MOBILE_PUSH_EMPL_INFO_R(
+                #{emplNo, mode=IN, jdbcType=INTEGER},
+                #{password, mode=IN, jdbcType=VARCHAR}
+                )
+            }
+    </select>
+
+    <insert id="saveRefreshToken">
+        MERGE INTO MOBILE_PUSH_LOGIN_TOKEN AS target
+        USING (SELECT #{emplNo} AS EMPL_NO) AS source
+        ON (target.EMPL_NO = source.EMPL_NO)
+
+        WHEN MATCHED THEN
+        UPDATE SET
+        LOGIN_TOKEN = #{refreshToken},
+        END_DATE = #{refreshExpiration}
+
+        WHEN NOT MATCHED THEN
+        INSERT (EMPL_NO, LOGIN_TOKEN, END_DATE)
+        VALUES (#{emplNo}, #{refreshToken}, #{refreshExpiration});
+    </insert>
+
+    <select id="getEmplNoByRefreshToken" resultType="tokenInfoDTO">
+        SELECT EMPL_NO, END_DATE
+        FROM MOBILE_PUSH_LOGIN_TOKEN
+        WHERE LOGIN_TOKEN = #{refreshToken}
+    </select>
+
+    <insert id="updateRefreshToken">
+        UPDATE MOBILE_PUSH_LOGIN_TOKEN
+        SET
+        LOGIN_TOKEN = #{refreshToken},
+        END_DATE = #{refreshExpiration}
+        WHERE
+        EMPL_NO = #{emplNo}
+    </insert>
+
+    <delete id="deleteRefreshToken">
+        DELETE FROM MOBILE_PUSH_LOGIN_TOKEN
+        WHERE EMPL_NO = #{emplNo}
+    </delete>
+</mapper>
