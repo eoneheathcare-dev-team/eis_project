@@ -21,6 +21,7 @@ repositories {
 dependencies {
     // --- Web & MVC ---
     implementation 'org.springframework.boot:spring-boot-starter-web' // webmvc는 보통 starter-web에 포함됩니다.
+    implementation 'org.springframework.boot:spring-boot-starter-validation'
     implementation 'org.springframework.boot:spring-boot-starter-restclient'
     implementation 'org.springframework.boot:spring-boot-starter-webservices'
 
@@ -28,7 +29,7 @@ dependencies {
     implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:4.0.1'
     implementation 'org.springframework.boot:spring-boot-starter-data-jdbc'
     implementation 'org.springframework.boot:spring-boot-starter-jdbc'
-    runtimeOnly 'com.microsoft.sqlserver:mssql-jdbc' // MSSQL 드라이버
+    implementation 'com.microsoft.sqlserver:mssql-jdbc' // MSSQL 드라이버
 
     // SpringDoc OpenAPI 3 (Swagger UI 포함)
     implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.7.0'

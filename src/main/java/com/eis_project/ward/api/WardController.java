@@ -6,6 +6,7 @@ import com.eis_project.ward.api.response.BedOccupancyRateResponse;
 import com.eis_project.ward.application.facade.WardFacade;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,6 +23,7 @@ import java.util.List;
  * DATE             AUTHOR              NOTE
  * ----------------------------------------------------
  * 26. 5. 27.       어 진              최초생성
+ * 26. 7. 1.        김주한              요청값 유효성 검증 적용
 */
 
 @Tag(name = "Ward", description = "병동 통계 API")
@@ -34,7 +36,7 @@ public class WardController {
 
     @Operation(summary = "병상가동률", description = "")
     @GetMapping("/bed-occupancy-rate")
-    public CommonResult<List<BedOccupancyRateResponse>> bedOccupancyRate (CommonDateRequest request) {
+    public CommonResult<List<BedOccupancyRateResponse>> bedOccupancyRate (@Valid CommonDateRequest request) {
         return CommonResult.success(wardFacade.bedOccupancyRate(request));
     }
     

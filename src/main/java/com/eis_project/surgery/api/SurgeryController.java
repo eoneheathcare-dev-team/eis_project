@@ -9,6 +9,7 @@ import com.eis_project.surgery.api.response.SurgeryResponse;
 import com.eis_project.surgery.application.facade.SurgeryFacade;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -26,6 +27,7 @@ import java.util.List;
  * ----------------------------------------------------
  * 26. 4. 28.       김주한             최초생성
  * 26. 5. 27.       어 진              수술 건수 조회 추가
+ * 26. 7. 1.        김주한              요청값 유효성 검증 적용
 */
 
 @Tag(name = "Surgery", description = "수술 통계 API")
@@ -38,19 +40,19 @@ public class SurgeryController {
 
     @Operation(summary = "수술 - 부서조회", description = "")
     @GetMapping("/dept")
-    public CommonResult<List<SurgeryDeptResponse>> surgeryDept (CommonDateRequest request) {
+    public CommonResult<List<SurgeryDeptResponse>> surgeryDept (@Valid CommonDateRequest request) {
         return CommonResult.success(surgeryFacade.surgeryDept(request));
     }
 
     @Operation(summary = "수술 - 수술조회", description = "")
     @GetMapping("")
-    public CommonResult<List<SurgeryResponse>> surgery (CommonDeptRequest request) {
+    public CommonResult<List<SurgeryResponse>> surgery (@Valid CommonDeptRequest request) {
         return CommonResult.success(surgeryFacade.surgery(request));
     }
 
     @Operation(summary = "수술 - 수술건수 조회", description = "")
     @GetMapping("/cnt/operations")
-    public CommonResult<List<OperationCntResponse>> operationCnt (CommonDateRequest request) {
+    public CommonResult<List<OperationCntResponse>> operationCnt (@Valid CommonDateRequest request) {
         return CommonResult.success(surgeryFacade.operationCnt(request));
     }
     

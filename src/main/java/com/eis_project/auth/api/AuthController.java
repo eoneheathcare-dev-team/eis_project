@@ -9,6 +9,7 @@ import com.eis_project.common.CommonResult;
 import com.eis_project.security.jwt.Jwt;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -24,6 +25,7 @@ import org.springframework.web.bind.annotation.RestController;
  * DATE             AUTHOR              NOTE
  * ----------------------------------------------------
  * 26. 6. 23.       어 진              최초생성
+ * 26. 7. 1.        김주한              요청값 유효성 검증 적용
  */
 
 @Tag(name= "Auth Controller", description = "인증 API")
@@ -36,20 +38,20 @@ public class AuthController {
 
     @Operation(summary = "로그인", description = "직원 번호와 비밀번호로 회원 정보 가져오기 (비밀번호 공란 시 회원정보만 GET)")
     @PostMapping("/login")
-    public CommonResult<LoginResponse> login(@RequestBody LoginRequest loginRequest) {
+    public CommonResult<LoginResponse> login(@Valid @RequestBody LoginRequest loginRequest) {
         return CommonResult.success(authFacade.login(loginRequest));
     }
 
     @Operation(summary = "로그아웃", description = "로그아웃")
     @PostMapping("/logout")
-    public CommonResult logout(@RequestBody LogoutRequest logoutRequest){
+    public CommonResult logout(@Valid @RequestBody LogoutRequest logoutRequest){
         authFacade.logout(logoutRequest);
         return CommonResult.success();
     }
 
     @Operation(summary = "refreshToken 으로 accessToken 재발급", description = "직원 번호와 비밀번호로 회원 정보 가져오기 (비밀번호 공란 시 회원정보만 GET)")
     @PostMapping("/reissued-token")
-    public CommonResult<Jwt> reissuedToken(@RequestBody ReissuedToeknRequest reissuedToeknRequest) {
+    public CommonResult<Jwt> reissuedToken(@Valid @RequestBody ReissuedToeknRequest reissuedToeknRequest) {
         return CommonResult.success(authFacade.reissuedToken(reissuedToeknRequest.getRefreshToken()));
     }
 }
