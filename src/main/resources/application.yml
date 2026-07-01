@@ -6,6 +6,16 @@ spring:
     url: jdbc:sqlserver://210.107.85.120:1433;databaseName=MEDIPLUS_DEV;encrypt=false;sendStringParametersAsUnicode=false;packetSize=4096;
     username: mccsi
     password: mccsi_3574
+  security:
+    user:
+      name: admin
+      password: 0000
+
+jwt:
+  access-secret: secretkeysecretkeysecretkeysecretkeysecretkeysecretkey
+  refresh-secret: secretkeysecretkeysecretkeysecretkeysecretkeysecretkeysecretkey
+  access-expiration: 7200000      # 2 hours: 2hours * 60min * 60sec * 1000 millisecond
+  refresh-expiration: 31536000000 # 1 year: 365days * 24hours * 60min * 60sec * 1000 millisecond
 
 mybatis:
   type-aliases-package: com.eis_project
@@ -19,9 +29,11 @@ mybatis:
 springdoc:
   default-consume-media-type: application/json
   default-produce-media-type: application/json
+  packages-to-scan: com.eis_project
   swagger-ui:
     path: /swagger-ui.html            # 접속 경로 커스텀
     disable-swagger-default-url: true
     display-request-duration: true    # 요청 소요 시간 표시
+    operations-sorter: method
   api-docs:
     path: /api-docs                   # JSON 생성 경로 커스텀
