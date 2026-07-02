@@ -24,7 +24,7 @@ import org.springframework.web.bind.annotation.RestController;
  * DATE             AUTHOR              NOTE
  * ----------------------------------------------------
  * 26. 4. 27.       김주한             최초생성
- * 26. 7. 1.        김주한              요청값 유효성 검증 적용
+ * 26. 7. 01.        김주한              요청값 유효성 검증 적용
 */
 
 @Tag(name = "Dashboard", description = "대시보드 통계 API")

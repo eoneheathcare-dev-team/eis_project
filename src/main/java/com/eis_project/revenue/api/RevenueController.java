@@ -28,7 +28,8 @@ import java.util.List;
  * 26. 4. 28.       김주한             최초생성
  * 26. 5. 27.       어 진              입원/외래 총 진료비 조회 추가
  * 26. 6. 01.       김주한             비급여 항목, 추이, 진료과별, 메인, 항목상세 API 추가
- * 26. 7. 1.        김주한              요청값 유효성 검증 적용
+ * 26. 7. 01.        김주한              요청값 유효성 검증 적용
+ * 26. 7. 02.        김주한             비급여 세부, 입원 / 외래 총 진료비 주석처리 (App 에서 미사용)
 */
 
 @Tag(name = "Revenue", description = "수익 통계 API")
@@ -51,11 +52,11 @@ public class RevenueController {
         return CommonResult.success(revenueFacade.revenue(request));
     }
 
-    @Operation(summary = "비급여 세부", description = "")
+    /*@Operation(summary = "비급여 세부", description = "")
     @GetMapping("/non-covered")
     public CommonResult<List<NonCoveredResponse>> nonCovered(@Valid CommonDateRequest request) {
         return CommonResult.success(revenueFacade.nonCovered(request));
-    }
+    }*/
 
     @Operation(summary = "비급여 분류", description = "")
     @GetMapping("/non-covered/division")
@@ -63,11 +64,11 @@ public class RevenueController {
         return CommonResult.success(revenueFacade.nonCoveredDivision(request));
     }
 
-    @Operation(summary = "입원 외래 총 진료비 ", description = "")
+    /*@Operation(summary = "입원 외래 총 진료비 ", description = "")
     @GetMapping("/profit/clinic")
     public CommonResult<List<TotalClinicRevenueResponse>> totalClinicRevenue(@Valid CommonSearchYmdRequest request) {
         return CommonResult.success(revenueFacade.totalClinicRevenue(request.getSearchYmd()));
-    }
+    }*/
 
     @Operation(summary = "비급여 항목", description = "")
     @GetMapping("/non-covered/item")

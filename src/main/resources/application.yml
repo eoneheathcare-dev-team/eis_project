@@ -14,7 +14,7 @@ spring:
 jwt:
   access-secret: secretkeysecretkeysecretkeysecretkeysecretkeysecretkey
   refresh-secret: secretkeysecretkeysecretkeysecretkeysecretkeysecretkeysecretkey
-  access-expiration: 7200000      # 2 hours: 2hours * 60min * 60sec * 1000 millisecond
+  access-expiration: 600000      # 2 hours: 2hours * 60min * 60sec * 1000 millisecond
   refresh-expiration: 31536000000 # 1 year: 365days * 24hours * 60min * 60sec * 1000 millisecond
 
 mybatis:

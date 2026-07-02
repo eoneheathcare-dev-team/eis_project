@@ -21,4 +21,5 @@ import lombok.Setter;
 public class DashboardAmountResponse {
     private Long opdClinicAmt;
     private Long admClinicAmt;
+    private Long monthAmt;
 }

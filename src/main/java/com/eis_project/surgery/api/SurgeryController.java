@@ -27,7 +27,8 @@ import java.util.List;
  * ----------------------------------------------------
  * 26. 4. 28.       김주한             최초생성
  * 26. 5. 27.       어 진              수술 건수 조회 추가
- * 26. 7. 1.        김주한              요청값 유효성 검증 적용
+ * 26. 7. 01.       김주한              요청값 유효성 검증 적용
+ * 26. 7. 02.       김주한             수술 건수 조회 주석처리 (App 에서 미사용)
 */
 
 @Tag(name = "Surgery", description = "수술 통계 API")
@@ -50,10 +51,10 @@ public class SurgeryController {
         return CommonResult.success(surgeryFacade.surgery(request));
     }
 
-    @Operation(summary = "수술 - 수술건수 조회", description = "")
+    /*@Operation(summary = "수술 - 수술건수 조회", description = "")
     @GetMapping("/cnt/operations")
     public CommonResult<List<OperationCntResponse>> operationCnt (@Valid CommonDateRequest request) {
         return CommonResult.success(surgeryFacade.operationCnt(request));
-    }
+    }*/
     
 }
