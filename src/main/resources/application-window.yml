@@ -12,9 +12,5 @@ spring:
     password: mccsi_3574
 
 mybatis:
-  type-aliases-package: com.eis_project
-  mapper-locations: classpath:mappers/**/*.xml
   configuration:
-    # 카멜 케이스 자동 변환 (DB의 user_id를 Java의 userId로)
-    map-underscore-to-camel-case: true
     default-statement-timeout: 180 # 10초 동안 DB 응답 없으면 강제 에러 발생!
